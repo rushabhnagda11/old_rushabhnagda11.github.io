@@ -21,7 +21,7 @@ public class StartingClass extends Applet implements Runnable,KeyListener {
 	private Background bg1,bg2;
 	private ArrayList<Pipe> uppipes = new ArrayList<Pipe>();
 	private ArrayList<Pipe> downpipes = new ArrayList<Pipe>();
-
+	private Frame frame;
 	private static int counter = 0,highscore = 0;
 	private Random r = new Random();
 	
@@ -33,7 +33,13 @@ public class StartingClass extends Applet implements Runnable,KeyListener {
 		setSize(272,406);
 		setBackground(Color.BLACK);
 		setFocusable(true);
-		Frame frame = (Frame) this.getParent();//.getParent();
+		try{
+			 frame = (Frame) this.getParent().getParent();
+	
+		}
+		catch(Exception e){
+			 frame = (Frame) this.getParent();//.getParent();
+		}
 		frame.setTitle("FooBird");
 		addKeyListener(this);
 		
