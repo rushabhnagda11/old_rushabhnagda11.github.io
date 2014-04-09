@@ -33,7 +33,7 @@ public class StartingClass extends Applet implements Runnable,KeyListener {
 		setSize(272,406);
 		setBackground(Color.BLACK);
 		setFocusable(true);
-		Frame frame = (Frame) this.getParent().getParent();
+		Frame frame = (Frame) this.getParent();//.getParent();
 		frame.setTitle("FooBird");
 		addKeyListener(this);
 		
@@ -92,7 +92,7 @@ public class StartingClass extends Applet implements Runnable,KeyListener {
 					
 					if(pu.getX() < -52){
 						counter += 1;
-						System.out.println(counter);
+					//	System.out.println(counter);
 						uppipes.remove(i);
 					}
 				}
