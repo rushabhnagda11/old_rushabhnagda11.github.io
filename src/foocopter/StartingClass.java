@@ -2,6 +2,7 @@ package foocopter;
 import framework.Animation;
 import java.applet.Applet;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -21,7 +22,7 @@ public class StartingClass extends Applet implements Runnable,KeyListener {
 	private ArrayList<Pipe> uppipes = new ArrayList<Pipe>();
 	private ArrayList<Pipe> downpipes = new ArrayList<Pipe>();
 
-	private static int counter = 0;
+	private static int counter = 0,highscore = 0;
 	private Random r = new Random();
 	
 	private boolean flag = false;
@@ -136,6 +137,17 @@ public class StartingClass extends Applet implements Runnable,KeyListener {
 			g.drawImage(upPipe,p.getX(),p.getY(),this);
 			g.drawImage(downPipe,p.getX(),p.getY()-318-116,this);
 		}
+		g.setFont(new Font("Helevetica", Font.BOLD, 20));
+		g.drawString(String.valueOf(counter), 130, 20);
+		
+		g.setFont(new Font("TimesRoman", Font.BOLD, 10));
+		g.drawString("HISCORE : ", 200, 15);
+		
+		if(counter > highscore){
+			highscore = counter;
+		}
+		g.setFont(new Font("TimesRoman", Font.BOLD, 10));
+		g.drawString(String.valueOf(highscore), 220, 35);
 //		for(int i = 0;i<downpipes.size();i++){
 //			Pipe p = (Pipe) downpipes.get(i);
 //			if(p.getX() > -52)
@@ -145,23 +157,27 @@ public class StartingClass extends Applet implements Runnable,KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
-		
+		// TODO Auto-generated method stub
+				switch(e.getKeyCode()){
+				case  KeyEvent.VK_SPACE:
+					fooBird.jump();
+					break;
+				}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		switch(e.getKeyCode()){
-		case  KeyEvent.VK_SPACE:
-			fooBird.jump();
-			break;
-		
-		
-		case  KeyEvent.VK_UP:
-			flag=true;
-			break;
-		}
+//		switch(e.getKeyCode()){
+//		case  KeyEvent.VK_SPACE:
+//			fooBird.jump();
+//			break;
+//		
+//		
+//		case  KeyEvent.VK_UP:
+//			flag=true;
+//			break;
+//		}
 	}
 
 	@Override
